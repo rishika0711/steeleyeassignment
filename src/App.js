@@ -5,6 +5,18 @@ import React, { useState, useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
 import {itemList} from './list';
 
+// Answers 
+/**
+ *  1. We are trying to wrap wrappedListComponent with memo in order to memoise the component
+ *     The purpose of the List function is bascially to render the list items
+ *  2. There were few code issues such as 
+ *      - Key was not passed for the items component. (Warning)
+ *      - We were using useState in the wrong way, state and set function were interchanged.
+ *      - We were calling the function (handleClick) in the SingleListItem in onClick props component instead of just passing it as a prop.
+ *      - Proptype was giving error when we were trying to use shape of function with array so I modified it with the correct props type
+ */
+
+
 // Single List Item
 const WrappedSingleListItem = ({
   index,
@@ -73,6 +85,10 @@ WrappedListComponent.defaultProps = {
   items: null,
 };
 
+/**
+ * We are trying to wrap wrappedListComponent with memo in order to memoise the component
+ * The purpose of the List function is bascially to render the list items
+ */
 const List = memo(WrappedListComponent);
 
   
@@ -84,7 +100,7 @@ function App() {
     </div>
   );
 }
-// const array=['a','b'];
+
 
 
 
